@@ -12,7 +12,6 @@ terraform {
 
 provider "docker" {}
 
-# Генерируем случайные пароли
 resource "random_password" "mysql_root_password" {
   length      = 16
   special     = false
@@ -29,13 +28,11 @@ resource "random_password" "mysql_user_password" {
   min_numeric = 1
 }
 
-# Создаем docker образ mysql
 resource "docker_image" "mysql" {
   name         = "mysql:8"
   keep_locally = true
 }
 
-# Запускаем контейнер mysql
 resource "docker_container" "mysql" {
   image = docker_image.mysql.image_id
   name  = "mysql-${random_password.mysql_root_password.result}"
