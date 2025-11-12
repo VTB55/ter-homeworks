@@ -21,18 +21,18 @@ terraform {
     region                   = "ru-central1"
 
     bucket  = "tfstate-develop" # FIO-netology-tfstate
-    key     = "production/terraform.tfstate"
+    key     = "dev1/dev1-terraform.tfstate"
     encrypt = false
 
     # НОВОЕ: Встроенный механизм блокировок (Terraform >= 1.6)
     # Не требует отдельной базы данных (DynamoDB/YDB)!
     use_lockfile = true
 
-    skip_region_validation      = true
     skip_credentials_validation = true
-    skip_requesting_account_id  = true # Необходимая опция Terraform для версии 1.6.1 и старше.
-    skip_s3_checksum            = true # Необходимая опция при описании бэкенда для Terraform версии 1.6.3 и старше.
-
+    skip_region_validation      = true
+    skip_requesting_account_id  = true
+    skip_s3_checksum            = true
+    
     endpoints = {
       s3 = "https://storage.yandexcloud.net"
     }
