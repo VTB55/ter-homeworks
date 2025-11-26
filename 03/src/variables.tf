@@ -30,3 +30,38 @@ variable "vpc_name" {
   default     = "develop"
   description = "VPC network&subnet name"
 }
+
+# variables.tf
+variable "vm_web_config" {
+  type = object({
+    platform_id    = string
+    cpu            = number
+    memory         = number
+    core_fraction  = number
+    disk_size      = number
+  })
+  default = {
+    platform_id   = "standard-v3"
+    cpu           = 2
+    memory        = 1
+    core_fraction = 20
+    disk_size     = 10
+  }
+}
+
+variable "vm_storage_config" {
+  type = object({
+    platform_id    = string
+    cpu            = number
+    memory         = number
+    core_fraction  = number
+    disk_size      = number
+  })
+  default = {
+    platform_id   = "standard-v3"
+    cpu           = 2
+    memory        = 1
+    core_fraction = 20
+    disk_size     = 10
+  }
+}
